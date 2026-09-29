@@ -14,6 +14,8 @@ Global middle-click autoscroll for Windows. Click the wheel once, move the point
 
 Once it is running, MiddleScroll takes the middle button ahead of other applications, so the two do not scroll at the same time.
 
+It is for anyone whose scroll wheel is stiff, or who finds flicking it back and forth tiring.
+
 ## Behavior
 
 - Speed follows the Chrome / Edge curve: a 15px dead zone, then `0.008 * distance^2.2` pixels per second.
