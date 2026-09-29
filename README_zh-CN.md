@@ -10,7 +10,7 @@
   </tr>
 </table>
 
-把浏览器里的中键自动滚动带到任意窗口。按一下滚轮出现准星，移动鼠标即可滚动；再按一次滚轮或按 Esc 退出。
+把浏览器里的中键自动滚动带到任意窗口。
 
 开启后，本工具优先接管中键，优先级高于其他软件，避免两边同时滚动造成冲突。
 
@@ -26,21 +26,19 @@
 
 ## 使用
 
-1. 运行 `MiddleScroll.exe`。程序停在通知区域，不需要安装。
+1. 运行 `MiddleScroll.exe`，或打开开始菜单，搜索 MiddleScroll，点击即可运行。
 2. 把指针放在要滚动的内容上，按一下滚轮。
 3. 上下移动鼠标。离准星越远，滚得越快。
 4. 再按一次滚轮，或按 Esc 退出。
 
 右键托盘图标可开关「全屏时暂停」和「开机自动启动」，也可选择「退出」。
 
-未开启开机自启时，打开开始菜单，搜索 MiddleScroll，点击即可运行。
+## 快速开始
 
-## Quick Start
-
-在 PowerShell 中运行下面的命令，将自动下载、解压并启动 MiddleScroll。启动后，按一下滚轮即可激活。
+在 PowerShell 中运行下面的命令，将自动下载、解压并运行 MiddleScroll。
 
 ```powershell
-curl.exe -fL -H "Accept: application/vnd.github.raw" -o "$pwd\MiddleScroll.zip" "https://api.github.com/repos/LuoRuomu/MiddleScroll/contents/MiddleScroll.zip"; if ($LASTEXITCODE -ne 0) { throw "download failed" }; Unblock-File -LiteralPath "$pwd\MiddleScroll.zip"; Expand-Archive -LiteralPath "$pwd\MiddleScroll.zip" -DestinationPath "$pwd" -Force; Unblock-File -LiteralPath "$pwd\MiddleScroll.exe"; $sc = (New-Object -ComObject WScript.Shell).CreateShortcut("$env:APPDATA\Microsoft\Windows\Start Menu\Programs\MiddleScroll.lnk"); $sc.TargetPath = "$pwd\MiddleScroll.exe"; $sc.WorkingDirectory = "$pwd"; $sc.Save(); Start-Process -FilePath "$pwd\MiddleScroll.exe"
+curl.exe -fL -H "Accept: application/vnd.github.raw" -o "$pwd\MiddleScroll.zip" "https://api.github.com/repos/LuoRuomu/MiddleScroll/contents/MiddleScroll.zip"; if ($LASTEXITCODE -ne 0) { throw "download failed" }; Unblock-File -LiteralPath "$pwd\MiddleScroll.zip"; Expand-Archive -LiteralPath "$pwd\MiddleScroll.zip" -DestinationPath "$pwd" -Force; Unblock-File -LiteralPath "$pwd\MiddleScroll.exe"; Start-Process -FilePath "$pwd\MiddleScroll.exe"
 ```
 
 ## 许可

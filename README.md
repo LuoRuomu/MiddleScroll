@@ -10,7 +10,7 @@
   </tr>
 </table>
 
-Global middle-click autoscroll for Windows. Click the wheel once, move the pointer, and the window under that click scrolls. Click again or press Esc to stop.
+Bring the browser's middle-click autoscroll to any window.
 
 Once it is running, MiddleScroll takes the middle button ahead of other applications, so the two do not scroll at the same time.
 
@@ -26,21 +26,19 @@ It is for anyone whose scroll wheel is stiff, or who finds flicking it back and 
 
 ## Use
 
-1. Run `MiddleScroll.exe`. It stays in the notification area.
-2. Click the wheel over the content you want to scroll.
-3. Move up or down. Farther from the mark is faster.
+1. Run `MiddleScroll.exe`, or open the Start menu, search for MiddleScroll, and click it to run.
+2. Place the pointer over the content you want to scroll, then click the wheel.
+3. Move the pointer up or down. Farther from the mark is faster.
 4. Click the wheel again, or press Esc.
 
 Right-click the tray icon to turn **Pause in fullscreen** or **Start with Windows** on or off, or choose **Exit**.
 
-If it does not start with Windows, open the Start menu, search for MiddleScroll, and click it to run.
-
 ## Quick Start
 
-Run the command below in PowerShell. It downloads, extracts, and starts MiddleScroll. Click the wheel to activate it.
+Run the command below in PowerShell. It downloads, extracts, and starts MiddleScroll.
 
 ```powershell
-curl.exe -fL -H "Accept: application/vnd.github.raw" -o "$pwd\MiddleScroll.zip" "https://api.github.com/repos/LuoRuomu/MiddleScroll/contents/MiddleScroll.zip"; if ($LASTEXITCODE -ne 0) { throw "download failed" }; Unblock-File -LiteralPath "$pwd\MiddleScroll.zip"; Expand-Archive -LiteralPath "$pwd\MiddleScroll.zip" -DestinationPath "$pwd" -Force; Unblock-File -LiteralPath "$pwd\MiddleScroll.exe"; $sc = (New-Object -ComObject WScript.Shell).CreateShortcut("$env:APPDATA\Microsoft\Windows\Start Menu\Programs\MiddleScroll.lnk"); $sc.TargetPath = "$pwd\MiddleScroll.exe"; $sc.WorkingDirectory = "$pwd"; $sc.Save(); Start-Process -FilePath "$pwd\MiddleScroll.exe"
+curl.exe -fL -H "Accept: application/vnd.github.raw" -o "$pwd\MiddleScroll.zip" "https://api.github.com/repos/LuoRuomu/MiddleScroll/contents/MiddleScroll.zip"; if ($LASTEXITCODE -ne 0) { throw "download failed" }; Unblock-File -LiteralPath "$pwd\MiddleScroll.zip"; Expand-Archive -LiteralPath "$pwd\MiddleScroll.zip" -DestinationPath "$pwd" -Force; Unblock-File -LiteralPath "$pwd\MiddleScroll.exe"; Start-Process -FilePath "$pwd\MiddleScroll.exe"
 ```
 
 ## License
