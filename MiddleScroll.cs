@@ -3,6 +3,7 @@
 
 using System;
 using System.Drawing;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -89,12 +90,11 @@ namespace MiddleScroll
 
             tray = new NotifyIcon
             {
-                Icon = SystemIcons.Application,
+                Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath),
                 Visible = true,
                 Text = "中键自动滚动：按一下滚轮，再移动鼠标",
                 ContextMenu = menu
             };
-            tray.Icon = MakeIcon();
 
             var handle = crosshair.Handle;
             if (handle == IntPtr.Zero)
@@ -223,24 +223,6 @@ namespace MiddleScroll
             return negative ? -wheelPerTick : wheelPerTick;
         }
 
-        private static Icon MakeIcon()
-        {
-            using (var bmp = new Bitmap(32, 32))
-            using (var g = Graphics.FromImage(bmp))
-            {
-                g.Clear(Color.Transparent);
-                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                using (var brush = new SolidBrush(Color.FromArgb(37, 99, 235)))
-                    g.FillEllipse(brush, 2, 2, 28, 28);
-                using (var pen = new Pen(Color.White, 2))
-                {
-                    g.DrawLine(pen, 16, 7, 16, 25);
-                    g.DrawLine(pen, 7, 16, 25, 16);
-                }
-                return Icon.FromHandle(bmp.GetHicon());
-            }
-        }
-
         private static bool IsAutostartEnabled()
         {
             using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", false))
@@ -278,6 +260,14 @@ namespace MiddleScroll
 
     internal sealed class Crosshair : Form
     {
+        private static readonly Image Mark = LoadMark();
+
+        private static Image LoadMark()
+        {
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MiddleScroll.crosshair.png");
+            return stream == null ? null : new Bitmap(stream);
+        }
+
         public Crosshair()
         {
             FormBorderStyle = FormBorderStyle.None;
@@ -316,18 +306,11 @@ namespace MiddleScroll
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            using (var brush = new SolidBrush(Color.FromArgb(230, 37, 99, 235)))
-                e.Graphics.FillEllipse(brush, 8, 8, 30, 30);
-            using (var pen = new Pen(Color.White, 2))
-            {
-                e.Graphics.DrawLine(pen, 23, 12, 23, 34);
-                e.Graphics.DrawLine(pen, 12, 23, 34, 23);
-                e.Graphics.DrawLine(pen, 23, 12, 19, 17);
-                e.Graphics.DrawLine(pen, 23, 12, 27, 17);
-                e.Graphics.DrawLine(pen, 23, 34, 19, 29);
-                e.Graphics.DrawLine(pen, 23, 34, 27, 29);
-            }
+            e.Graphics.Clear(Color.Magenta);
+            if (Mark == null)
+                return;
+            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            e.Graphics.DrawImage(Mark, new Rectangle(0, 0, Width, Height));
         }
     }
 
