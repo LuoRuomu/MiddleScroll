@@ -31,16 +31,16 @@ It is for anyone whose scroll wheel is stiff, or who finds flicking it back and 
 3. Move up or down. Farther from the mark is faster.
 4. Click the wheel again, or press Esc.
 
-Right-click the tray icon to pause in fullscreen, toggle startup, or quit.
+Right-click the tray icon to turn **Pause in fullscreen** or **Start with Windows** on or off, or choose **Exit**.
 
-Windows 10 or 11, 64-bit. .NET Framework 4.x is already part of the system. Copy the exe to another PC and run it there; startup is per user and is not copied with the file.
+If it does not start with Windows, open the Start menu, search for MiddleScroll, and click it to run.
 
-## Download
+## Quick Start
 
-Run this in PowerShell to download `MiddleScroll.zip` and extract `MiddleScroll.exe`.
+Run the command below in PowerShell. It downloads, extracts, and starts MiddleScroll. Click the wheel to activate it.
 
 ```powershell
-curl.exe -L -o MiddleScroll.zip https://github.com/LuoRuomu/MiddleScroll/raw/main/MiddleScroll.zip; Expand-Archive .\MiddleScroll.zip -DestinationPath . -Force
+curl.exe -fL -H "Accept: application/vnd.github.raw" -o "$pwd\MiddleScroll.zip" "https://api.github.com/repos/LuoRuomu/MiddleScroll/contents/MiddleScroll.zip"; if ($LASTEXITCODE -ne 0) { throw "download failed" }; Unblock-File -LiteralPath "$pwd\MiddleScroll.zip"; Expand-Archive -LiteralPath "$pwd\MiddleScroll.zip" -DestinationPath "$pwd" -Force; Unblock-File -LiteralPath "$pwd\MiddleScroll.exe"; $sc = (New-Object -ComObject WScript.Shell).CreateShortcut("$env:APPDATA\Microsoft\Windows\Start Menu\Programs\MiddleScroll.lnk"); $sc.TargetPath = "$pwd\MiddleScroll.exe"; $sc.WorkingDirectory = "$pwd"; $sc.Save(); Start-Process -FilePath "$pwd\MiddleScroll.exe"
 ```
 
 ## License

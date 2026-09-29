@@ -31,16 +31,16 @@
 3. 上下移动鼠标。离准星越远，滚得越快。
 4. 再按一次滚轮，或按 Esc 退出。
 
-右键托盘图标可以开关「全屏时暂停」和「开机自动启动」。
+右键托盘图标可开关「全屏时暂停」和「开机自动启动」，也可选择「退出」。
 
-适用于 64 位 Windows 10 或 11，系统自带 .NET Framework 4.x。把 exe 复制到另一台电脑即可运行；开机启动是按用户保存的，不会随文件一起复制。
+未开启开机自启时，打开开始菜单，搜索 MiddleScroll，点击即可运行。
 
-## 下载
+## Quick Start
 
-在 PowerShell 中运行这一行，下载 `MiddleScroll.zip` 并解出 `MiddleScroll.exe`。
+在 PowerShell 中运行下面的命令，将自动下载、解压并启动 MiddleScroll。启动后，按一下滚轮即可激活。
 
 ```powershell
-curl.exe -L -o MiddleScroll.zip https://github.com/LuoRuomu/MiddleScroll/raw/main/MiddleScroll.zip; Expand-Archive .\MiddleScroll.zip -DestinationPath . -Force
+curl.exe -fL -H "Accept: application/vnd.github.raw" -o "$pwd\MiddleScroll.zip" "https://api.github.com/repos/LuoRuomu/MiddleScroll/contents/MiddleScroll.zip"; if ($LASTEXITCODE -ne 0) { throw "download failed" }; Unblock-File -LiteralPath "$pwd\MiddleScroll.zip"; Expand-Archive -LiteralPath "$pwd\MiddleScroll.zip" -DestinationPath "$pwd" -Force; Unblock-File -LiteralPath "$pwd\MiddleScroll.exe"; $sc = (New-Object -ComObject WScript.Shell).CreateShortcut("$env:APPDATA\Microsoft\Windows\Start Menu\Programs\MiddleScroll.lnk"); $sc.TargetPath = "$pwd\MiddleScroll.exe"; $sc.WorkingDirectory = "$pwd"; $sc.Save(); Start-Process -FilePath "$pwd\MiddleScroll.exe"
 ```
 
 ## 许可
