@@ -1,16 +1,18 @@
-# MiddleScroll
-
-<p align="center">
-  <img src="assets/crosshair.png" width="72" alt="Middle-click scroll mark">
+<p>
+  <a href="README.md"><img alt="English" src="https://img.shields.io/badge/English-2563EB?style=for-the-badge"></a>
+  <a href="README_zh-CN.md"><img alt="简体中文" src="https://img.shields.io/badge/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-9CA3AF?style=for-the-badge"></a>
 </p>
+
+<table>
+  <tr>
+    <td width="72"><img src="assets/crosshair.png" width="64" alt="MiddleScroll"></td>
+    <td><h1>MiddleScroll</h1></td>
+  </tr>
+</table>
 
 Global middle-click autoscroll for Windows. Click the wheel once, move the pointer, and the window under that click scrolls. Click again or press Esc to stop.
 
-Once it is running, it takes the middle button ahead of other applications, so their own scroll gestures do not fight with it.
-
-把浏览器里的中键自动滚动带到任意窗口。按一下滚轮出现准星，移动鼠标即可滚动；再按一次滚轮或按 Esc 退出。
-
-开启后，本工具优先接管中键，优先级高于其他软件，避免两边同时滚动造成冲突。
+Once it is running, MiddleScroll takes the middle button ahead of other applications, so the two do not scroll at the same time.
 
 ## Behavior
 
@@ -20,8 +22,6 @@ Once it is running, it takes the middle button ahead of other applications, so t
 - The middle button is taken in every application. Borderless fullscreen is left alone.
 - Horizontal movement scrolls sideways.
 
-速度曲线与 Chrome / Edge 一致：准星周围 15 像素不滚动，超出后按距离的 2.2 次方加速。滚动锁定在按下滚轮时的窗口上。滚动过程中物理滚轮不再叠加。中键在所有软件中优先由本工具处理；无边框全屏（游戏、视频）除外。
-
 ## Use
 
 1. Run `MiddleScroll.exe`. It stays in the notification area.
@@ -30,8 +30,6 @@ Once it is running, it takes the middle button ahead of other applications, so t
 4. Click the wheel again, or press Esc.
 
 Right-click the tray icon to pause in fullscreen, toggle startup, or quit.
-
-双击 `MiddleScroll.exe` 即可。程序停在通知区域，不需要安装。托盘菜单可以开关「全屏时暂停」和「开机自动启动」。
 
 Windows 10 or 11, 64-bit. .NET Framework 4.x is already part of the system. Copy the exe to another PC and run it there; startup is per user and is not copied with the file.
 
