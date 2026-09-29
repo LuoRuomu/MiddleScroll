@@ -35,13 +35,19 @@
 
 适用于 64 位 Windows 10 或 11，系统自带 .NET Framework 4.x。把 exe 复制到另一台电脑即可运行；开机启动是按用户保存的，不会随文件一起复制。
 
+## 下载
+
+别人不用运行 build。到 [Releases](https://github.com/LuoRuomu/MiddleScroll/releases) 下载 `MiddleScroll.exe`，双击即可。没有安装包。
+
 ## 构建
 
+只有想自己改代码、自己编译时才需要。先把本仓库克隆到电脑上，在**那个文件夹**里打开 PowerShell，再运行：
+
 ```powershell
-powershell -ExecutionPolicy Bypass -File build.ps1
+powershell -ExecutionPolicy Bypass -File .\build.ps1
 ```
 
-可执行文件输出到 `bin/MiddleScroll.exe`。构建使用 .NET Framework 自带的 C# 编译器（`csc.exe`），目标平台为 x64。
+在别的文件夹里粘贴这一行会失败，因为 `build.ps1` 是项目里的文件。编译结果在 `bin/MiddleScroll.exe`。构建使用 .NET Framework 自带的 C# 编译器（`csc.exe`），目标平台为 x64。
 
 ## 许可
 
