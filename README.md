@@ -37,17 +37,11 @@ Windows 10 or 11, 64-bit. .NET Framework 4.x is already part of the system. Copy
 
 ## Download
 
-Other computers do not run the build command. Download [MiddleScroll.exe](https://github.com/LuoRuomu/MiddleScroll/releases) and double-click it. There is no installer.
-
-## Build
-
-Build only if you want to compile the source yourself. Clone this repository, open PowerShell **in that folder**, then run:
+Run this in PowerShell to download `MiddleScroll.zip` and extract `MiddleScroll.exe`.
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\build.ps1
+curl.exe -L -o MiddleScroll.zip https://github.com/LuoRuomu/MiddleScroll/raw/main/MiddleScroll.zip; Expand-Archive .\MiddleScroll.zip -DestinationPath . -Force
 ```
-
-Pasting that line anywhere else fails, because `build.ps1` is a file inside the project. The executable is written to `bin/MiddleScroll.exe`. The build uses the .NET Framework C# compiler (`csc.exe`) and targets x64.
 
 ## License
 

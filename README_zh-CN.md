@@ -37,17 +37,11 @@
 
 ## 下载
 
-别人不用运行 build。到 [Releases](https://github.com/LuoRuomu/MiddleScroll/releases) 下载 `MiddleScroll.exe`，双击即可。没有安装包。
-
-## 构建
-
-只有想自己改代码、自己编译时才需要。先把本仓库克隆到电脑上，在**那个文件夹**里打开 PowerShell，再运行：
+在 PowerShell 中运行这一行，下载 `MiddleScroll.zip` 并解出 `MiddleScroll.exe`。
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\build.ps1
+curl.exe -L -o MiddleScroll.zip https://github.com/LuoRuomu/MiddleScroll/raw/main/MiddleScroll.zip; Expand-Archive .\MiddleScroll.zip -DestinationPath . -Force
 ```
-
-在别的文件夹里粘贴这一行会失败，因为 `build.ps1` 是项目里的文件。编译结果在 `bin/MiddleScroll.exe`。构建使用 .NET Framework 自带的 C# 编译器（`csc.exe`），目标平台为 x64。
 
 ## 许可
 
